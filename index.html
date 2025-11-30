@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jean Bosco | Futur étudiant en informatique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #10b981;
+            --dark-accent: #059669;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --text: #1e293b;
+            --text-light: #94a3b8;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            --cyber-gradient: linear-gradient(135deg, #1e40af 0%, #065f46 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .cyber-title::after {
+            background: var(--cyber-gradient);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-cyber {
+            background: var(--cyber-gradient);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        /* NOUVELLE SECTION HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="%232563eb" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .floating-card {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .floating-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .card-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .card-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-list li i {
+            color: var(--accent);
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 12px;
+            background: white;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: -10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 0s;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: -5%;
+            width: 100px;
+            height: 100px;
+            animation-delay: 2s;
+            background: white;
+            color: var(--primary);
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: -5%;
+            width: 70px;
+            height: 70px;
+            animation-delay: 4s;
+            background: var(--cyber-gradient);
+            color: white;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        /* Motivation Section */
+        .motivation {
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            margin: 0 auto 1.5rem;
+        }
+
+        .section-header h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .motivation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .motivation-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .motivation-block {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .motivation-block:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .motivation-block h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .motivation-block h3 i {
+            font-size: 1.5rem;
+        }
+
+        .motivation-image {
+            height: 100%;
+            min-height: 500px;
+            border-radius: 20px;
+            background: var(--cyber-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .motivation-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 8s infinite linear;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Skills Section */
+        .skills {
+            background-color: #f1f5f9;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            gap: 15px;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-category.cyber .skill-icon {
+            background: var(--cyber-gradient);
+            -webkit-background-clip: text;
+        }
+
+        .skill-category h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            background: var(--cyber-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+        }
+
+        .project-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background-color: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            margin: 1.5rem 0;
+        }
+
+        .project-features h4 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .project-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .project-features li i {
+            color: var(--accent);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .project-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .see-more-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Cybersecurity Section */
+        .cybersecurity {
+            background: var(--cyber-gradient);
+            color: white;
+        }
+
+        .cybersecurity .section-header h2 {
+            color: white;
+        }
+
+        .cybersecurity .section-header h2::after {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .cybersecurity p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cyber-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .cyber-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cyber-block {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .cyber-block:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cyber-block h3 {
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cyber-block h3 i {
+            font-size: 1.5rem;
+        }
+
+        .cyber-visual {
+            height: 100%;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .cyber-visual:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .cyber-visual-content {
+            text-align: center;
+        }
+
+        .cyber-visual i {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cyber-visual h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 16px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .contact-details p {
+            margin-bottom: 0;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            background: #f8fafc;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about h3 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+
+            .motivation-content,
+            .cyber-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 18px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                height: auto;
+                padding: 140px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-actions {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .skill-category,
+            .project-card,
+            .contact-form {
+                padding: 1.5rem;
+            }
+            
+            .floating-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        /* Styles pour la section Vos avis */
+        .star-rating {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .star {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .star:hover {
+            color: #ffc107;
+        }
+
+        .star.active {
+            color: #ffc107;
+        }
+
+        /* Boîte de notification système */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            animation: slideIn 0.3s ease-out;
+            max-width: 400px;
+        }
+
+        .notification.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .notification.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .notification.info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .notification-close:hover {
+            opacity: 1;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .notification.fade-out {
+            animation: slideOut 0.3s ease-out forwards;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Jean Bosco</a>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#motivation">Motivation</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#projets">Projets</a></li>
+                    <li><a href="#cybersecurite">Cybersécurité</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- NOUVELLE SECTION HERO -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content fade-in">
+                    <div class="hero-badge">
+                        <i class="fas fa-rocket"></i> Futur étudiant en informatique
+                    </div>
+                    <h1>De la biologie à la cybersécurité : ma passion pour l'informatique</h1>
+                    <p>Étudiant actuellement en Licence Sciences de la Vie, je développe depuis plusieurs mois un intérêt profond pour l'informatique, particulièrement pour la cybersécurité et la compréhension des systèmes numériques.</p>
+                    <p>Au fil de mes travaux personnels, de mes recherches et de mes premières pratiques en programmation, j'ai découvert une véritable passion pour l'analyse, la logique et la protection des données.</p>
+                    <div class="hero-btns">
+                        <a href="#projets" class="btn">Voir mes projets <i class="fas fa-arrow-right"></i></a>
+                        <a href="#competences" class="btn btn-outline">Mes compétences</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual fade-in delay-1">
+                    <div class="floating-card">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="card-title">Mon parcours en bref</h3>
+                        <ul class="card-list">
+                            <li><i class="fas fa-check"></i> Étudiant en Sciences de la Vie</li>
+                            <li><i class="fas fa-check"></i> Passionné d'informatique</li>
+                            <li><i class="fas fa-check"></i> Autodidacte en programmation</li>
+                            <li><i class="fas fa-check"></i> Projet de réorientation</li>
+                        </ul>
+                        <a href="#motivation" class="btn btn-small">En savoir plus</a>
+                    </div>
+                    
+                    <div class="floating-elements">
+                        <div class="floating-element">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="floating-element">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="floating-element">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivation Section -->
+    <section id="motivation" class="motivation">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Ma Motivation</h2>
+                <p>Découvrez mon parcours et ma passion naissante pour l'informatique et la sécurité</p>
+            </div>
+            <div class="motivation-content">
+                <div class="motivation-text fade-in">
+                    <div class="motivation-block">
+                        <h3><i class="fas fa-history"></i> Mon parcours</h3>
+                        <p>Depuis mon plus jeune âge, l'informatique a toujours occupé une place particulière dans mon quotidien. Dès mon entrée au collège, j'ai développé une aisance naturelle avec les outils numériques.</p>
+                    </div>
+                    
+                    <div class="motivation-block">
+                        <h3><i class="fas fa-lightbulb"></i> Ma passion</h3>
+                        <p>Très vite, cela est devenu un réflexe : dès qu'un appareil ne fonctionnait plus correctement, mes parents ou mes proches venaient me solliciter. Cette facilité m'a donné confiance et a nourri une passion qui n'a cessé de grandir.</p>
+                    </div>
+                    
+                    <div class="motivation-block">
+                        <h3><i class="fas fa-graduation-cap"></i> Mon évolution</h3>
+                        <p>Même si mon parcours m'a d'abord conduit vers une Licence en Sciences de la Vie, je n'ai jamais cessé de cultiver cet intérêt pour l'informatique. Chaque semaine, j'apprends de nouvelles compétences de manière autonome.</p>
+                    </div>
+                    
+                    <div class="motivation-block">
+                        <h3><i class="fas fa-target"></i> Mon objectif</h3>
+                        <p>Aujourd'hui, cette passion s'est transformée en véritable projet professionnel. C'est cette évolution naturelle qui me pousse à me réorienter vers la Licence Informatique pour préparer une spécialisation future en cybersécurité.</p>
+                    </div>
+                </div>
+                <div class="motivation-image fade-in delay-1"  style="background-image: url(image\ copy.png) ;background-position: center;background-size: cover;">
+                    <div>
+                        <h3>Passion • Curiosité • Détermination</h3>
+                        <p style="color: white;">Une transition naturelle vers l'informatique</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competences" class="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Mes Compétences Techniques</h2>
+                <p>Les technologies que j'ai apprises et que je maîtrise</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category fade-in">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Maîtrise des outils informatiques</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check"></i> Très bonne aisance avec l'outil informatique</li>
+                        <li><i class="fas fa-check"></i> Utilisation régulière de Windows et Linux</li>
+                        <li><i class="fas fa-check"></i> Adaptation aux différents environnements</li>
+                        <li><i class="fas fa-check"></i> Compréhension des spécificités de chaque système</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category fade-in delay-1">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Initiation au développement web</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check"></i> Construction de sites avec HTML et CSS</li>
+                        <li><i class="fas fa-check"></i> Compréhension de la structure d'une page web</li>
+                        <li><i class="fas fa-check"></i> Logique de conception d'un site</li>
+                        <li><i class="fas fa-check"></i> Configuration de nom de domaine et mise en ligne</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-category cyber fade-in delay-2">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Automatisation et création de scripts</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check"></i> Création de bots automatisés</li>
+                        <li><i class="fas fa-check"></i> Scripts interconnectant plusieurs applications</li>
+                        <li><i class="fas fa-check"></i> Automatisations entre outils (Notion, Google Sheets)</li>
+                        <li><i class="fas fa-check"></i> Développement de la logique informatique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets" class="projects">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Mes Projets</h2>    
+                <p>Réalisations concrètes démontrant mon apprentissage et ma motivation</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image"  style="background-image: url(image.png) ;background-position: center;background-size: cover;">
+                        
+                    </div>
+                    <div class="project-content">
+                        <h3>Automatisation entre Google Sheets et Notion</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">API</span>
+                            <span class="project-tag">Automatisation</span>
+                            <span class="project-tag">Google Apps Script</span>
+                        </div>
+                        <div class="project-description">
+                            <p>Création d'un script d'automatisation permettant de synchroniser automatiquement des données entre Google Sheets et Notion.</p>
+                        </div>
+                        <div class="project-features">
+                            <h4>Défis relevés :</h4>
+                            <ul>
+                                <li><i class="fas fa-cog"></i> Comprendre la structure d'une base de données Notion</li>
+                                <li><i class="fas fa-cog"></i> Explorer l'API de Google Sheets</li>
+                                <li><i class="fas fa-cog"></i> Concevoir un script capable de détecter les mises à jour</li>
+                                <li><i class="fas fa-cog"></i> Assurer une synchronisation fiable sans erreurs</li>
+                            </ul>
+                        </div>
+                        <div class="project-actions">
+                            <a href="automatisation.html" class="btn btn-small">Voir le projet <i class="fas fa-code"></i></a>
+                            <a href="automatisation.html" class="btn btn-small btn-outline">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in delay-1">
+                    <div class="project-image" style="background-image: url(e.png) ;background-position: center;background-size: cover;">
+                    </div>
+                    <div class="project-content">
+                        <h3>Création de mon site web personnel</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML5</span>
+                            <span class="project-tag">CSS3</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Design</span>
+                        </div>
+                        <div class="project-description">
+                            <p>Conception complète de mon site web personnel présentant mon parcours et mes compétences.</p>
+                        </div>
+                        <div class="project-features">
+                            <h4>Objectifs atteints :</h4>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Site clair, moderne et professionnel</li>
+                                <li><i class="fas fa-check-circle"></i> Structure cohérente des pages</li>
+                                <li><i class="fas fa-check-circle"></i> Présentation convaincante de mon parcours</li>
+                                <li><i class="fas fa-check-circle"></i> Démonstration de mes capacités techniques</li>
+                            </ul>
+                        </div>
+                        <div class="project-actions">
+                            <a href="site.html" class="btn btn-small">Voir le projet <i class="fas fa-external-link-alt"></i></a>
+                            <a href="site.html" class="btn btn-small btn-outline">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="see-more-container fade-in">
+                <a href="#projets" class="btn btn-outline">Voir tous mes projets</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cybersecurity Section -->
+    <section id="cybersecurite" class="cybersecurity">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 class="cyber-title">Cybersécurité</h2>
+                <p>Mon orientation future vers la protection des systèmes d'information</p>
+            </div>
+            <div class="cyber-content">
+                <div class="cyber-text fade-in">
+                    <div class="cyber-block">
+                        <h3><i class="fas fa-shield-alt"></i> Mon intérêt pour la cybersécurité</h3>
+                        <p>La cybersécurité représente pour moi bien plus qu'un simple domaine technique : c'est un enjeu majeur du monde moderne, au cœur de la protection des individus, des organisations et des infrastructures essentielles.</p>
+                    </div>
+                    
+                    <div class="cyber-block">
+                        <h3><i class="fas fa-bullseye"></i> Mes centres d'intérêt</h3>
+                        <ul style="list-style-type: none; margin-left: 0;">
+                            <li style="margin-bottom: 10px;">✓ <strong>La sécurité des applications web</strong> et la compréhension des vulnérabilités</li>
+                            <li style="margin-bottom: 10px;">✓ <strong>Les principes cryptographiques</strong> et leurs applications concrètes</li>
+                            <li style="margin-bottom: 10px;">✓ <strong>L'analyse des risques</strong> et la mise en place de contre-mesures</li>
+                            <li style="margin-bottom: 10px;">✓ <strong>La sensibilisation à la protection des données</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cyber-block">
+                        <h3><i class="fas fa-target"></i> Mon objectif professionnel</h3>
+                        <p>Mon ambition est de devenir expert en cybersécurité, capable de concevoir des systèmes plus sûrs, contribuer à la défense des infrastructures numériques, analyser des risques complexes et participer activement à la lutte contre les cybermenaces.</p>
+                    </div>
+                </div>
+                <div class="cyber-visual fade-in delay-1" style="background-image: url(i.jpg); background-position: center; background-size: cover;">
+                    <div class="cyber-visual-content">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>Cybersécurité</h3>
+                        <p>Prêt à relever les défis de la cybersécurité</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vos avis Section (remplace Contact) -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Vos avis</h2>
+                <p>Laissez un avis sur mon parcours et mes projets</p>
+            </div>
+
+            <div class="review-form card fade-in" style="max-width: 600px; margin: 0 auto;">
+                <h3>Laisser un avis</h3>
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="review-name">Nom</label>
+                        <input type="text" id="review-name" placeholder="Votre nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-email">Email</label>
+                        <input type="email" id="review-email" placeholder="Votre email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-text">Votre avis</label>
+                        <textarea id="review-text" placeholder="Votre message" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Note (sur 5)</label>
+                        <div class="star-rating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <input type="hidden" id="review-rating" value="0">
+                    </div>
+                    <button type="submit" id="envoie" class="btn">Envoyer mon avis <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div id="notification" class="notification" style="display: none;">
+                    <span id="notification-text"></span>
+                    <button class="notification-close">&times;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Jean Bosco</h3>
+                    <p>Futur étudiant en informatique passionné par le développement et la cybersécurité. Motivé à apprendre et à relever de nouveaux défis pour contribuer à un numérique plus sûr.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#motivation">Motivation</a></li>
+                        <li><a href="#competences">Compétences</a></li>
+                        <li><a href="#projets">Projets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="#cybersecurite">Cybersécurité</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Jean Bosco. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+   
+</body>
+<script src="frontendjs.js"></script>
+</html>

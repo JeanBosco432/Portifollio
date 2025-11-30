@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Web Personnel | Jean Bosco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #10b981;
+            --dark-accent: #059669;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --text: #1e293b;
+            --text-light: #94a3b8;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
+            --cyber-gradient: linear-gradient(135deg, #1e40af 0%, #065f46 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(248, 250, 252, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 35px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        /* Project Detail Page */
+        .project-detail {
+            padding-top: 140px;
+            min-height: 100vh;
+            background-color: #f8fafc;
+        }
+
+        .project-detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .project-detail-header {
+            padding: 3rem;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .project-detail-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .project-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .project-detail-content {
+            padding: 3rem;
+        }
+
+        .project-detail-section {
+            margin-bottom: 3rem;
+        }
+
+        .project-detail-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+        }
+
+        .project-detail-section h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--primary);
+        }
+
+        .project-detail-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-detail-section li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            margin: 2rem 0;
+        }
+
+        .content-block h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-block h3 i {
+            font-size: 1.5rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .back-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about h3 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 25px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 18px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+            
+            .project-detail-header,
+            .project-detail-content {
+                padding: 2rem;
+            }
+            
+            .project-detail-header h1 {
+                font-size: 2rem;
+            }
+            
+            .content-block {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Jean Bosco</a>
+                <ul class="nav-links">
+                    <li><a href="index.html#accueil">Accueil</a></li>
+                    <li><a href="index.html#motivation">Motivation</a></li>
+                    <li><a href="index.html#competences">Compétences</a></li>
+                    <li><a href="index.html#projets">Projets</a></li>
+                    <li><a href="index.html#cybersecurite">Cybersécurité</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Project Detail Section -->
+    <section class="project-detail">
+        <div class="container">
+            <a href="index.html#projets" class="back-button">
+                <i class="fas fa-arrow-left"></i> Retour aux projets
+            </a>
+            
+            <div class="project-detail-container">
+                <div class="project-detail-header" style="background-image: url('e.png'); background-position: center; background-size: cover;">
+                    
+                </div>
+                
+                <div class="project-detail-content">
+                    <!-- Description du Projet -->
+                    <div class="project-detail-section">
+                        <h2>Description du Projet</h2>
+                        <p>Dans le cadre de ma réorientation en Licence Informatique, j'ai entrepris la création complète de mon site web personnel, celui que vous êtes actuellement en train de consulter.</p>
+                        <p>Ce projet représente pour moi bien plus qu'un simple exercice : il s'agit d'un véritable espace où je mets en pratique mes compétences, où je présente mon parcours et où je démontre ma motivation pour l'informatique.</p>
+                    </div>
+
+                    <!-- Objectifs du projet -->
+                    <div class="project-detail-section">
+                        <h2>Objectifs du projet</h2>
+                        <div class="content-block">
+                            <h3><i class="fas fa-bullseye"></i> Objectifs Principaux</h3>
+                            <ul>
+                                <li>Concevoir un site clair, moderne et professionnel</li>
+                                <li>Structurer des pages (Accueil, Motivation, Compétences, Projets, Contact…)</li>
+                                <li>Présenter mon parcours de manière cohérente et convaincante</li>
+                                <li>Montrer ma capacité à créer un site fonctionnel en autonomie</li>
+                                <li>Utiliser cet espace comme support concret pour ma candidature</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Ce que j'ai réalisé -->
+                    <div class="project-detail-section">
+                        <h2>Ce que j'ai réalisé</h2>
+                        <div class="content-block">
+                            <h3><i class="fas fa-check-circle"></i> Réalisations Concrètes</h3>
+                            <ul>
+                                <li>Création des pages et de leur structure</li>
+                                <li>Rédaction de tous les contenus, adaptés à une présentation académique</li>
+                                <li>Utilisation des langages HTML et CSS pour la mise en forme</li>
+                                <li>Mise en place d'une identité visuelle simple et efficace</li>
+                                <li>Optimisation du site pour qu'il soit lisible, intuitif et agréable à parcourir</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Compétences développées -->
+                    <div class="project-detail-section">
+                        <h2>Compétences développées</h2>
+                        <div class="content-block">
+                            <h3><i class="fas fa-cogs"></i> Compétences Acquises</h3>
+                            <ul>
+                                <li>Structuration d'un site web</li>
+                                <li>Compréhension du fonctionnement du front-end</li>
+                                <li>Mise en page, organisation des sections et cohérence visuelle</li>
+                                <li>Versioning du code et déploiement via dépôt GitHub</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Pourquoi ce projet est important -->
+                    <div class="project-detail-section">
+                        <h2>Pourquoi ce projet est important</h2>
+                        <div class="content-block">
+                            <h3><i class="fas fa-star"></i> Signification du Projet</h3>
+                            <p>Ce site symbolise la transition entre mon parcours initial en Sciences de la Vie et mon futur projet professionnel dans l'informatique et la cybersécurité.</p>
+                            <p>Il représente une démonstration concrète de :</p>
+                            <ul>
+                                <li>Ma capacité d'adaptation et d'apprentissage autonome</li>
+                                <li>Ma motivation pour le domaine de l'informatique</li>
+                                <li>Mes compétences techniques en développement web</li>
+                                <li>Mon engagement dans un projet personnel significatif</li>
+                                <li>Ma vision pour mon avenir professionnel</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="project-detail-section">
+                        <a href="index.html#projets" class="btn btn-outline">
+                            <i class="fas fa-arrow-left"></i> Retour aux projets
+                        </a>
+                        <a href="index.html" class="btn" style="margin-left: 1rem;">
+                            <i class="fas fa-external-link-alt"></i> Voir le site en ligne
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Jean Bosco</h3>
+                    <p>Futur étudiant en informatique passionné par le développement et la cybersécurité. Motivé à apprendre et à relever de nouveaux défis pour contribuer à un numérique plus sûr.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="index.html#accueil">Accueil</a></li>
+                        <li><a href="index.html#motivation">Motivation</a></li>
+                        <li><a href="index.html#competences">Compétences</a></li>
+                        <li><a href="index.html#projets">Projets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="index.html#cybersecurite">Cybersécurité</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Jean Bosco. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Toggle for Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
